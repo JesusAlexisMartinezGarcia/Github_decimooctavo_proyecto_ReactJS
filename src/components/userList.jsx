@@ -1,5 +1,6 @@
 // import React, { useEffect } from 'react'
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
+import { useFetchData } from '../hooks/useFetchData';
 
 /*
 export const UserList = () => {
@@ -8,6 +9,10 @@ export const UserList = () => {
 */
 
 export const UserList = ({ endPoint }) => {
+
+    const { data, isLoading } = useFetchData(endPoint)
+
+    /*
     const [data, setData] = useState([])
 
     const fetchdata = async () => {
@@ -25,11 +30,17 @@ export const UserList = ({ endPoint }) => {
         fetchdata()
     }, [endPoint])
 
+    */
+
     return (
         <>
             <ul>
-                {endPoint == 'users' ? data.map(item => <li key={item.id}>{item.name}</li>)
-                    : data.map(item => <li key={item.id}>{item.body}</li>)}
+                {isLoading
+                    ? <p>Cargando...</p>
+                    : endPoint == 'users'
+                        ? data.map(item => <li key={item.id}>{item.name}</li>)
+                        : data.map(item => <li key={item.id}>{item.body}</li>)
+                }
             </ul>
 
         </>

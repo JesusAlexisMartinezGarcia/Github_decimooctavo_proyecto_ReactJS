@@ -6,7 +6,7 @@ import { UserList } from './components/userList'
 
 export const UsersApp = () => {
 
-    const [endPoint, setendPoint] = useState('users')
+    const [endPoint, setEndPoint] = useState('users')
 
     /*
     useEffect ( () => {
@@ -15,7 +15,7 @@ export const UsersApp = () => {
     */
 
     const handleFetch = () => {
-        setendPoint('comments')
+        setEndPoint('comments')
     }
 
     return (
